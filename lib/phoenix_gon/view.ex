@@ -22,6 +22,8 @@ defmodule PhoenixGon.View do
   @doc false
   @spec script(Plug.Conn) :: List.t
   defp script(conn) do
+    IO.inspect assets(conn)
+    IO.puts "encoded assets #{Poison.encode!(assets(conn))}"
     """
     var #{namespace(conn)} = (function(window) {
       var phoenixEnv = '#{settings(conn)[:env]}';
