@@ -24,6 +24,7 @@ defmodule PhoenixGon.Controller do
   @doc false
   @spec put_gon(Plug.Conn.t, Map.t) :: Plug.Conn.t
   def put_gon(conn, opts) when is_map(opts) do
+    IO.puts "IN PHOENIX_GON #{inspect opts}"
     %PhoenixGon.Storage{assets: assets} = variables(conn)
     assets = Map.merge(assets, opts)
     put_private(conn, :phoenix_gon, %{variables(conn) | assets: assets})
